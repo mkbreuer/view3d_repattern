@@ -22,7 +22,6 @@ Implements draw calls, popups, and operators that use the addon_updater.
 """
 
 import os
-import traceback
 
 import bpy
 from bpy.app.handlers import persistent
@@ -34,12 +33,10 @@ try:
 except Exception as e:
 	print("ERROR INITIALIZING UPDATER")
 	print(str(e))
-	traceback.print_exc()
 	class Singleton_updater_none(object):
 		def __init__(self):
 			self.addon = None
 			self.verbose = False
-			self.use_print_traces = True
 			self.invalidupdater = True # used to distinguish bad install
 			self.error = None
 			self.error_msg = None
@@ -60,7 +57,7 @@ except Exception as e:
 # Must declare this before classes are loaded
 # otherwise the bl_idname's will not match and have errors.
 # Must be all lowercase and no spaces
-updater.addon = "repattern_updater"
+updater.addon = "view3d_repattern_updater"
 
 
 # -----------------------------------------------------------------------------
@@ -294,7 +291,6 @@ class addon_updater_update_now(bpy.types.Operator):
 			except Exception as e:
 				updater._error = "Error trying to run update"
 				updater._error_msg = str(e)
-				updater.print_trace()
 				atr = addon_updater_install_manually.bl_idname.split(".")
 				getattr(getattr(bpy.ops, atr[0]),atr[1])('INVOKE_DEFAULT')
 		elif updater.update_ready == None:
@@ -361,7 +357,7 @@ class addon_updater_update_target(bpy.types.Operator):
 		if updater.invalidupdater == True:
 			layout.label(text="Updater error")
 			return
-		split = layout_split(layout, factor=0.5)
+		split = layout_split(layout, factor=0.66)
 		subcol = split.column()
 		subcol.label(text="Select install version")
 		subcol = split.column()
@@ -1338,8 +1334,7 @@ def register(bl_info):
 	# choose your own username, must match website (not needed for GitLab)
 	updater.user = "mkbreuer"
 
-	# choose your own repository, must match git name for GitHUb and Bitbucket,
-	# for GitLab use project ID (numbers only)
+	# choose your own repository, must match git name
 	updater.repo = "view3d_repattern"
 
 	#updater.addon = # define at top of module, MUST be done first
@@ -1474,11 +1469,6 @@ def register(bl_info):
 
 	# Function defined above, customize as appropriate per repository; not required
 	updater.select_link = select_link_function
-
-	# Recommended false to encourage blender restarts on update completion
-	# Setting this option to True is NOT as stable as false (could cause
-	# blender crashes)
-	updater.auto_reload_post_update = False
 
 	# The register line items for all operators/panels
 	# If using bpy.utils.register_module(__name__) to register elsewhere

@@ -294,20 +294,20 @@ class RTS_OT_RePattern_Grid_Reference(bpy.types.Operator):
 
 
         if grid_prefs.add_axis == True:                         
-            
-            bpy.ops.mesh.primitive_grid_add(x_subdivisions=0, y_subdivisions=0, size=300, location=(0, 0, 0))               
+
+            bpy.ops.mesh.primitive_grid_add(x_subdivisions=0, y_subdivisions=0, size=300, location=(0, 0, 0), rotation=(0, 0, 0), scale=(1, 1, 1), enter_editmode=False, align='WORLD')               
             bpy.ops.object.mode_set(mode='EDIT')                   
             bpy.ops.mesh.select_all(action='SELECT')
             bpy.ops.mesh.delete(type='VERT')
     
             if grid_prefs.set_axis_xy == True:                     
-                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_xy_axis_x, loca_xy_axis_y, loca_xy_axis_z), rotation=(0, 0, 0))
+                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_xy_axis_x, loca_xy_axis_y, loca_xy_axis_z), rotation=(0, 0, 0), scale=(1, 1, 1), enter_editmode=False, align='WORLD')
         
             if grid_prefs.set_axis_yz == True: 
-                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_yz_axis_x, loca_yz_axis_y, loca_yz_axis_z), rotation=(0, 1.5708, 0))
+                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_yz_axis_x, loca_yz_axis_y, loca_yz_axis_z), rotation=(0, 1.5708, 0), scale=(1, 1, 1), enter_editmode=False, align='WORLD')
                 
             if grid_prefs.set_axis_xz == True:          
-                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_xz_axis_x, loca_xz_axis_y, loca_xz_axis_z), rotation=(1.5708, 0, 0))  
+                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_xz_axis_x, loca_xz_axis_y, loca_xz_axis_z), rotation=(1.5708, 0, 0), scale=(1, 1, 1), enter_editmode=False, align='WORLD')  
         
             bpy.ops.mesh.select_all(action='SELECT')                
             bpy.ops.object.mode_set(mode='OBJECT')   
@@ -315,13 +315,13 @@ class RTS_OT_RePattern_Grid_Reference(bpy.types.Operator):
         else:     
             
             if grid_prefs.axis_rota == 'rota_axis_xy':                     
-                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_xy_axis_x, loca_xy_axis_y, loca_xy_axis_z), rotation=(0, 0, 0))
+                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_xy_axis_x, loca_xy_axis_y, loca_xy_axis_z), rotation=(0, 0, 0), scale=(1, 1, 1), enter_editmode=False, align='WORLD')
 
             if grid_prefs.axis_rota == 'rota_axis_yz': 
-                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_yz_axis_x, loca_yz_axis_y, loca_yz_axis_z), rotation=(0, 1.5708, 0))
+                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_yz_axis_x, loca_yz_axis_y, loca_yz_axis_z), rotation=(0, 1.5708, 0), scale=(1, 1, 1), enter_editmode=False, align='WORLD')
        
             if grid_prefs.axis_rota == 'rota_axis_xz':     
-                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_xz_axis_x, loca_xz_axis_y, loca_xz_axis_z), rotation=(1.5708, 0, 0))
+                bpy.ops.mesh.primitive_grid_add(x_subdivisions=grid_prefs.grid, y_subdivisions=grid_prefs.grid, size=grid_radius, location=(loca_xz_axis_x, loca_xz_axis_y, loca_xz_axis_z), rotation=(1.5708, 0, 0), scale=(1, 1, 1), enter_editmode=False, align='WORLD')
            
 
         new_object_name = bpy.context.object.name
@@ -463,19 +463,19 @@ class RTS_OT_RePattern_Grid_Reference(bpy.types.Operator):
             clip_value = 100
 
         if grid_prefs.grid_result == "512px":    
-            clip_value = 100
-
-        if grid_prefs.grid_result == "1024px":  
             clip_value = 1000
 
-        if grid_prefs.grid_result == "2048px":  
+        if grid_prefs.grid_result == "1024px":  
             clip_value = 10000
+
+        if grid_prefs.grid_result == "2048px":  
+            clip_value = 100000
        
         if grid_prefs.grid_result == "4096px":  
-            clip_value = 100000
+            clip_value = 1000000
        
         if grid_prefs.grid_result == "custom":  
-            clip_value = 100000
+            clip_value = 1000000
 
         bpy.context.space_data.clip_end = clip_value
 

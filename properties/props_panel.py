@@ -8,7 +8,7 @@ class PropsGroup_Panel(bpy.types.PropertyGroup):
     category: StringProperty(
         name="Tab Category", 
         description="move panel to named tab", 
-        default="ReTools", 
+        default="RePattern", 
         update=update_panel)
 
     switch_utils_tools : BoolProperty(name="", description="tools from addon: material utils", default=False)   

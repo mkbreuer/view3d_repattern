@@ -1,6 +1,6 @@
 # ##### BEGIN GPL LICENSE BLOCK #####
 #
-# (C) 2020 MKB
+# (C) 2021 MKB
 #
 #  This program is free software; you can redistribute it and / or
 #  modify it under the terms of the GNU General Public License
@@ -23,12 +23,12 @@
 bl_info = {
     "name": "RePattern",
     "author": "marvin.k.breuer (MKB)",
-    "version": (0, 2, 4),
+    "version": (0, 2, 5),
     "blender": (2, 91, 0), 
-    "location": "Default: 3D View > Sidebar [T] > Tab: ReTools > Panel: RePattern",
-    "description": "tileable pattern creation",
+    "location": "Default: 3D View > Sidebar [T] > Default Tab: ReP > Panel: RePattern",
+    "description": "Tileable mesh and texture pattern creation",
     "warning": "",
-    "wiki_url": "https://github.com/mkbreuer",
+    "wiki_url": "https://github.com/mkbreuer/view3d_repattern",
     "category": "User Tools",
     }  
 

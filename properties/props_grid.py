@@ -4,6 +4,22 @@ from bpy.props import StringProperty, EnumProperty, BoolProperty, IntProperty, F
 # RP: GRID / SUBGRID #  
 class PropsGroup_Grid(bpy.types.PropertyGroup):
 
+    # UNITS # 
+    unit_typ : EnumProperty( 
+        items = [("metric", "Metric", "1m = 1BU = 1024px"),
+                 ("none",   "None",   "1BU = 1m = 1024px")],
+                 name = "Unit Sytem",  
+                 default = "metric",  
+                 description="unit system for interface controls")  
+
+    u_lenght : EnumProperty( 
+        items = [("meters", "Meters",      ""),
+                 ("centi",  "Centimeters", "")],
+                 name = "Unit Length",  
+                 default = "meters",  
+                 description="unit system for interface controls")  
+  
+  
     collapse_toggle : BoolProperty(name="Close Collections", description="close all collections", default=False)   
     collapse_parent : BoolProperty(name="Parent Collections", description="parent to scene or under child collections", default=False)   
    

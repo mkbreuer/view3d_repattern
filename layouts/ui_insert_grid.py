@@ -11,7 +11,35 @@ def draw_grid_ui(self, context):
     prefs = get_prefs()
     panel_prefs = prefs.panel_type
     grid_prefs = prefs.grid_type
+    
+    box = layout.box().column(align=True)       
+    box.separator()
+    
+    row = box.row(align=True)
+    if panel_prefs.display_rp_wrap_grid:            
+        icon_units="DISCLOSURE_TRI_DOWN"
+    else:
+        icon_units="DISCLOSURE_TRI_RIGHT"        
+    row.prop(panel_prefs, "display_rp_wrap_grid", text="", icon=icon_units, emboss=False) 
+    row.label(text="Units")   
+    row.operator("rts_ot.units_metric_cm", text="", icon="SCENE_DATA")     
+    
+    box.separator()  
+ 
+    if panel_prefs.display_rp_wrap_grid:
+     
+        row = box.row(align=True)
+        row.label(text="Unit System") 
+        row.prop(grid_prefs, 'unit_typ', text="")  
 
+        if grid_prefs.unit_typ == 'metric': 
+            row = box.row(align=True)
+            row.label(text="Units Length")
+            row.prop(grid_prefs, 'u_lenght', text="")  
+        
+        box.separator()  
+    
+    layout = self.layout.column(align=True)  
     box = layout.box().column(align=True)       
     box.separator()
 

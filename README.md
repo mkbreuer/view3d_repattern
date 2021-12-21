@@ -1,6 +1,6 @@
 # RePattern - Blender Addon
 
-- set up for tileable mesh pattern and texture creation.
+- set up for tileable mesh and texture pattern creation.
 
 - work in progress
 - ...

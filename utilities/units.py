@@ -10,7 +10,7 @@ def get_units_info(scale, unit_system, separate_units):
         scale /= 0.3048  # BU to feet
    
     else:
-        scale_steps = ((1, ' BU'),)
+        scale_steps = ((1, ' BU'),) 
         separate_units = False
 
     return (scale, scale_steps, separate_units)
