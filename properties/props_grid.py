@@ -24,7 +24,7 @@ class PropsGroup_Grid(bpy.types.PropertyGroup):
     collapse_parent : BoolProperty(name="Parent Collections", description="parent to scene or under child collections", default=False)   
    
     # GRID # 
-    grid : IntProperty(name="Div XY",  description=" ", min=0, max=40, default=4)                                 
+    grid : IntProperty(name="Div XY",  description=" ", min=0, max=40, default=3)                                 
     lock_grid : BoolProperty(name="NoSelect",  description="restrict viewport selection", default=True, options={'SKIP_SAVE'})   
     render_grid : BoolProperty(name="NoRender",  description="restrict rendering", default=True, options={'SKIP_SAVE'})  
     pock_grid : BoolProperty(name="Pock",  description="add a triangulate wired grid", default=False, options={'SKIP_SAVE'})  
@@ -70,8 +70,8 @@ class PropsGroup_Grid(bpy.types.PropertyGroup):
 
 
     # SUBGRID #
-    subgrid_x : IntProperty(name="Div X",  description="loops on x axis", min=0, max=40, default=4)                                 
-    subgrid_y : IntProperty(name="Div Y",  description="loops on y axis", min=0, max=40, default=4)                                 
+    subgrid_x : IntProperty(name="Div X",  description="loops on x axis", min=0, max=40, default=3)                                 
+    subgrid_y : IntProperty(name="Div Y",  description="loops on y axis", min=0, max=40, default=3)                                 
     lock_subgrid : BoolProperty(name="NoSelect",  description="restrict viewport selection", default=True, options={'SKIP_SAVE'})  
     render_subgrid : BoolProperty(name="NoRender",  description="restrict rendering", default=True, options={'SKIP_SAVE'})  
     pock_subgrid : BoolProperty(name="Pock",  description="add a triangulate wired grid", default=False, options={'SKIP_SAVE'})  
