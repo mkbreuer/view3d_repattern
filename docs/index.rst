@@ -1,6 +1,6 @@
-=========================
-RePattern - Blender Addon
-=========================
+=========
+RePattern
+=========
 
 Release Download : https://github.com/mkbreuer/view3d_repatternt/releases
 
