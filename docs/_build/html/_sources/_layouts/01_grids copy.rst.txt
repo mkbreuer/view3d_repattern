@@ -1,0 +1,25 @@
+Grids
++++++
+
+Key Goals
+=========
+
+
+Grid for Instances
+==================
+
+Options
+-------
+
+Wall Grids
+----------
+
+
+SubGrid for Snapping
+====================
+
+
+
+
+
+
