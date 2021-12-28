@@ -3,15 +3,15 @@ Lights
 
 .. image:: /_images/06_lights.png
 
-Types
-=====
 
-Options
--------
+Add Light
+=========
+
+-  add and editing a top light 
 
 
-Setups
-======
 
-Options
--------
+Volume Light
+============
+
+- add a volume light to the scene

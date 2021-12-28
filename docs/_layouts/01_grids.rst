@@ -8,23 +8,33 @@ Key Goals
 =========
 
 
-Grid for Instances
-==================
+Grid
+====
+
+- Adding a mesh grid floor as preview helper for the wrap instances.
+  
 
 Options
 -------
 
-Wall Grids
-----------
+
 
 
 
 SubGrid for Snapping
 ====================
 
+- Adding a mesh sub grid tot he middle field as snap helper
+
+
 Options
 -------
 
+
+
+
+Wall Grids
+----------
 
 
 Grid Floor
