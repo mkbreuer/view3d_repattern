@@ -3,7 +3,7 @@ import rna_keymap_ui
 from bpy.props import BoolProperty, EnumProperty
 
 from ..utilities.getkey import get_key_mt, get_key_pie
-from ..menus import update_menus
+from ..menus import update_keymenus
 
 
 class PropsGroup_Keys(bpy.types.PropertyGroup):
@@ -12,7 +12,7 @@ class PropsGroup_Keys(bpy.types.PropertyGroup):
         name="Switch Menu Layout",
         description="switch menu layout type",
         default=True, 
-        update = update_menus)  
+        update = update_keymenus)  
 
     rst_menu_layouts : EnumProperty(
          name = '3D View Menus',
@@ -20,7 +20,7 @@ class PropsGroup_Keys(bpy.types.PropertyGroup):
          items=(('menu',   'Context Menu', 'enable menu for 3D View'),
                 ('pie',    'Pie Menu',  'enable pie for 3D View'),
                 ('off',    'Off',  'diable menus for 3D View')),
-         default='menu', update = update_menus)
+         default='menu', update = update_keymenus)
 
 
 # Layout AddonPrefs

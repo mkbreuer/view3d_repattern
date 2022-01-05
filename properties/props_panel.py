@@ -29,6 +29,7 @@ class PropsGroup_Panel(bpy.types.PropertyGroup):
     display_rp_light        : BoolProperty(name="Open", description="open/close expand panel", default=False)   
     display_rp_grid         : BoolProperty(name="Open", description="open/close expand panel", default=False)   
     display_rp_wrap_name    : BoolProperty(name="Open", description="open/close expand panel", default=False)   
+    display_rp_wrap_units   : BoolProperty(name="Open", description="open/close expand panel", default=False)   
     display_rp_wrap_grid    : BoolProperty(name="Open", description="open/close expand panel", default=False)   
     display_rp_wrap_subgrid : BoolProperty(name="Open", description="open/close expand panel", default=False)   
     display_rp_settings     : BoolProperty(name="Open", description="open/close expand panel", default=False)   

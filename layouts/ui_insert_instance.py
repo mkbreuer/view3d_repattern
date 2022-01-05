@@ -2,6 +2,7 @@ import bpy
 from ..utilities.utils import get_prefs
 from ..icons.general import get_icon_id_general
 
+from ..utilities.units import get_current_units
 
 def draw_instance_ui(self, context):
     layout = self.layout.column(align=True)  
@@ -131,6 +132,16 @@ def draw_instance_ui(self, context):
 
 
             if instance_prefs.typ_geometry == "typ_cube": #default
+
+                # row = box.row(align=True) 
+                # row.label(text="Mesh Size:") 
+                # sub1 = row.row(align=True)
+                # sub1.scale_x = 0.7
+                # sub1.prop(instance_prefs, 'bounds_cube_radius', text='') 
+                # unitinfo = get_current_units()      
+                # sub1.label(text=unitinfo[0])
+
+                # box.separator()     
 
                 row = box.row(align=True) 
                 row.label(text="Subdivide:") 

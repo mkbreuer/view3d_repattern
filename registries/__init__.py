@@ -20,8 +20,12 @@ def register_addon():
     update_panel(None, bpy.context) 
 
     # KeyMap
-    from ..menus import update_menus
-    update_menus(None, bpy.context) 
+    from ..menus import update_keymenus
+    update_keymenus(None, bpy.context)
+
+    # Menus
+    from ..menus import register_menus
+    register_menus() 
 
     # Material
     from ..materials import update_color
@@ -30,13 +34,11 @@ def register_addon():
     # Material
     from ..materials import register_material
     register_material() 
-
-    from ..menus import register_material_menus
-    register_material_menus()     
   
     # Icons
     from ..icons.palette import load_icons
     load_icons()
+
 
 
 def unregister_addon():
@@ -53,13 +55,17 @@ def unregister_addon():
     from .icon import unregister_icons
     unregister_icons()
 
+    # Menus
+    from ..menus import unregister_menus
+    unregister_menus() 
+
     # Material
     from ..materials import unregister_material
     unregister_material()
 
-    from ..menus import unregister_material_menus
-    unregister_material_menus() 
-
     # Icons
     from ..icons.palette import clear_icons
     clear_icons()
+
+
+

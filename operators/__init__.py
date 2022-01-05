@@ -18,6 +18,7 @@ from .ot_display import *
 from .ot_editor import * 
 from .ot_fake import * 
 from .ot_grid import *  
+from .ot_grid_sub import *  
 from .ot_hdri_render import *
 from .ot_instance import *
 from .ot_lights import *  

@@ -1,5 +1,5 @@
 import bpy
-
+from ..utilities.utils      import get_prefs
 
 from .preferences import AddonPrefs_RePattern
 from .props_camera import PropsGroup_Camera
@@ -47,7 +47,6 @@ def register_properties():
         register_class(cls)
     
     bpy.types.WindowManager.rp_props_repattern = bpy.props.PointerProperty(type = PropsGroup_Material)
-
 
 def unregister_properties():
     from bpy.utils import unregister_class

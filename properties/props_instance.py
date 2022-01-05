@@ -1,6 +1,7 @@
 import bpy
-from bpy.props import StringProperty, EnumProperty, BoolProperty, IntProperty, FloatProperty, FloatVectorProperty, BoolVectorProperty
 
+from bpy.props import StringProperty, EnumProperty, BoolProperty, IntProperty, FloatProperty, FloatVectorProperty, BoolVectorProperty
+from ..utilities.units import get_current_units, bu_to_unit, unit_to_bu
 
 # RP: WRAP PRIMITIVES AND INSTANCES # 
 class PropsGroup_Instance(bpy.types.PropertyGroup):
@@ -87,17 +88,17 @@ class PropsGroup_Instance(bpy.types.PropertyGroup):
    
     use_handles : BoolProperty(name="Use Handles", description=" ", default=False)   
 
-
     # GRID #
     bounds_grid_subdivX : IntProperty(name="X-Loops", description="set vertices value",  min=2, max=100, default=0, step=1)
     bounds_grid_subdivY : IntProperty(name="Y-Loops", description="set vertices value",  min=2, max=100, default=0, step=1)
     bounds_grid_size : FloatProperty(name="Size", description="set vertices value", default=10.0, min=0.01, max=100)            
 
     # CUBE #
-    bounds_cube_radius : FloatProperty(name="Radius",  default=10.0, min=0.01, max=100, description="xyz scaling")
-  
+    bounds_cube_radius : FloatProperty(name="Radius", default=0.1, min=0.01, max=100, description="xyz scaling")
+    
+
     # BOX (CUBE ALTERNATIVE) #
-    scale : FloatVectorProperty(name="Scale", default=(10.0, 10.0, 10.0), subtype='TRANSLATION', description="xyz scaling" )
+    scale : FloatVectorProperty(name="Scale", default=(0.1, 0.1, 0.1), subtype='TRANSLATION', description="xyz scaling" )
     rotation : FloatVectorProperty(name="Rotation", subtype='EULER')
     location : FloatVectorProperty(name="Location", subtype='TRANSLATION')
     rotation : FloatVectorProperty(name="Rotation",subtype='EULER')
@@ -105,24 +106,24 @@ class PropsGroup_Instance(bpy.types.PropertyGroup):
             
     # CIRCLE #
     bounds_circle_amount : IntProperty(name="Verts", description="set vertices value",  min=3, max=80, default=12)
-    bounds_circle_radius : FloatProperty(name="Radius", description="set vertices value", default=10.0, min=0.01, max=100)
+    bounds_circle_radius : FloatProperty(name="Radius", description="set vertices value", default=0.1, min=0.01, max=100)
 
     # CYLINDER #
     bounds_cylinder_amount : IntProperty(name="Verts", description="set vertices value",  min=3, max=80, default=12)
-    bounds_cylinder_radius : FloatProperty(name="Radius", description="set vertices value", default=10.0, min=0.01, max=100)
-    bounds_cylinder_depth : FloatProperty(name="Depth", description="set depth value", default=10.0, min=0.01, max=100)
+    bounds_cylinder_radius : FloatProperty(name="Radius", description="set vertices value", default=0.1, min=0.01, max=100)
+    bounds_cylinder_depth : FloatProperty(name="Depth", description="set depth value", default=0.1, min=0.01, max=100)
 
     # CONE #
     bounds_cone_amount : IntProperty(name="Verts", description="vertices value",  min=3, max=80, default=12)
-    bounds_cone_radius_1 : FloatProperty(name="Bottom", description="set bottom value",  min=0.01, max=100, default=20)
-    bounds_cone_radius_2 : FloatProperty(name="Top", description="set top value",  min=0.01, max=100, default=10.0)
-    bounds_cone_depth : FloatProperty(name="Depth", description="set depth value",  min=1, max=100, default=20)
+    bounds_cone_radius_1 : FloatProperty(name="Bottom", description="set bottom value",  min=0.01, max=100, default=10)
+    bounds_cone_radius_2 : FloatProperty(name="Top", description="set top value",  min=0.01, max=100, default=0.1)
+    bounds_cone_depth : FloatProperty(name="Depth", description="set depth value",  min=1, max=100, default=10)
 
     # TORUS #
     bounds_torus_segments_1 : IntProperty(name="Major Segments", description="set value",  min=1, max=100, default=51) 
     bounds_torus_segments_2 : IntProperty(name="Minor Segments", description="set value",  min=1, max=100, default=15)
-    bounds_torus_size_1 : FloatProperty(name="Major Radius", description="set value", default=11.3, min=0.01, max=1000)
-    bounds_torus_size_2 : FloatProperty(name="Minor Radius", description="set value", default=7.8, min=0.01, max=1000)
+    bounds_torus_size_1 : FloatProperty(name="Major Radius", description="set value", default=1.13, min=0.01, max=1000)
+    bounds_torus_size_2 : FloatProperty(name="Minor Radius", description="set value", default=0.78, min=0.01, max=1000)
     bounds_torus_dimension : EnumProperty(
                                          items = [("MAJOR_MINOR", "Major/Minor",       ""),                      
                                                   ("EXT_INT",     "Exterior/Interior", "")], 
@@ -131,14 +132,14 @@ class PropsGroup_Instance(bpy.types.PropertyGroup):
     # SPHERE #
     bounds_sphere_segments : IntProperty(name="Segments",  description="set value", min=1, max=100, default=32) 
     bounds_sphere_ring : IntProperty(name="Rings",  description="set value",  min=1, max=100, default=16) 
-    bounds_sphere_size : FloatProperty(name="Size",  description="set value", default=10.00, min=0.01, max=100) 
+    bounds_sphere_size : FloatProperty(name="Size",  description="set value", default=0.1, min=0.01, max=100) 
    
     # ICO #
     bounds_ico_subdiv : IntProperty(name="Subdiv",  description="set value", min=1, max=5, default=2) 
-    bounds_ico_size : FloatProperty(name="Size",  description="set value", default=10.00, min=0.01, max=100) 
+    bounds_ico_size : FloatProperty(name="Size",  description="set value", default=0.1, min=0.01, max=100) 
 
     # CURVE  #
-    bounds_curve_radius : FloatProperty(name="Radius",  default=10.0, min=0.01, max=100, description="xyz scaling")
+    bounds_curve_radius : FloatProperty(name="Radius",  default=0.1, min=0.01, max=100, description="xyz scaling")
 
     # curve: shape
     bounds_curve_type : EnumProperty(items = [("2D", "2D", ""), 

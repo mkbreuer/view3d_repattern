@@ -13,7 +13,7 @@ panels = (
 
 def update_panel(self, context):
     prefs = get_prefs()
-    message = "RePattern: Updating Panel locations has failed"
+    message = "Updating Panel has failed"
     try:
         for panel in panels:
             if "bl_rna" in panel.__dict__:
@@ -25,5 +25,6 @@ def update_panel(self, context):
             bpy.utils.register_class(panel)
 
     except Exception as e:
-        print("\n[{}]\n{}\n\nError:\n{}".format(__name__, message, e))
+        #print("\n[{}]\n{}\n\nError:\n{}".format(__name__, message, e))
+        self.report({'INFO'}, __name__, message, e) 
         pass
